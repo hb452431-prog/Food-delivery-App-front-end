@@ -1,175 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Authentication Page</title>
-
-<style>
-
-body{
-    background-color:#E6EEF1;
-    font-family:Arial, sans-serif;
-}
-
-.container{
-    width:700px;
-    min-height:700px;
-    border:3px solid black;
-    border-radius:25px;
-    background-color:#E6EEF1;
-    padding:30px;
-    margin:30px auto;
-}
-
-h1{
-    text-align:center;
-}
-
-label{
-    font-size:20px;
-}
-
-input{
-    padding:10px;
-    width:90%;
-    height:25px;
-    border-radius:25px;
-    border:3px solid #37FD12;
-}
-
-button{
-    width:400px;
-    height:45px;
-    border-radius:25px;
-    border:3px solid black;
-    background-color:#01FFFF;
-    cursor:pointer;
-}
-
-button:hover{
-    background-color:#FF2400;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Page</title>
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 450px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555555;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            padding: 12px;
+            width: 100%;
+            height: 45px;
+            border-radius: 6px;
+            border: 1px solid #cccccc;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #0066cc;
+            outline: none;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            width: 100%;
+            height: 45px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-submit {
+            background-color: #0066cc;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .btn-submit:hover {
+            background-color: #0052a3;
+        }
+        .btn-login {
+            background-color: #f0f0f0;
+            color: #333333;
+            border: 1px solid #cccccc;
+        }
+        .btn-login:hover {
+            background-color: #e5e5e5;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <div class="container">
+        <h1>Login / Registration</h1>
+        
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+        </div>
+        
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" id="mobile" placeholder="Enter mobile number">
+        </div>
+        
+        <div class="form-group">
+            <label>Email-ID</label>
+            <input type="email" id="email" placeholder="Enter email address">
+        </div>
+        
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password">
+        </div>
+        
+        <div class="form-group">
+            <label>Gender</label>
+            <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Date Of Birth</label>
+            <input type="date" id="birth">
+        </div>
 
-<h1>Login / Registration Page</h1>
+        <div class="btn-container">
+            <button class="btn-submit" onclick="profileStore()">Submit</button>
+            <button class="btn-login" onclick="window.location.href='Home.html'">Login</button>
+        </div>
+    </div>
 
-<hr>
+    <script>
+        function profileStore(){
+            let name = document.getElementById("name").value;
+            let mobile = document.getElementById("mobile").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let gender = document.getElementById("gender").value;
+            let birth = document.getElementById("birth").value;
 
-<label>Name:</label>
+            localStorage.setItem("name", name);
+            localStorage.setItem("mobile", mobile);
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
+            localStorage.setItem("gender", gender);
+            localStorage.setItem("birth", birth);
 
-<br>
-
-<input type="text" id="name" placeholder="Name...">
-
-<br><br>
-
-
-<label>Mobile Number:</label>
-
-<br>
-
-<input type="text" id="mobile" placeholder="Number...">
-
-<br><br>
-
-
-<label>Email-ID:</label>
-
-<br>
-
-<input type="email" id="email" placeholder="Email...">
-
-<br><br>
-
-
-<label>Password:</label>
-
-<br>
-
-<input type="password" id="password" placeholder="Password...">
-
-<br><br>
-
-
-<label>Gender:</label>
-
-<br>
-
-<input type="text" id="gender" placeholder="Gender...">
-
-<br><br>
-
-
-<label>Date Of Birth:</label>
-
-<br>
-
-<input type="date" id="birth">
-
-<br><br><br>
-
-
-<center>
-
-<button onclick="profileStore()">
-    Submit
-</button>
-
-<br><br>
-
-<button onclick="window.location.href='Home.html'">
-    Login
-</button>
-
-</center>
-
-</div>
-
-
-<script>
-
-function profileStore(){
-
-    let name = document.getElementById("name").value;
-
-    let mobile = document.getElementById("mobile").value;
-
-    let email = document.getElementById("email").value;
-
-    let gender = document.getElementById("gender").value;
-
-    let birth = document.getElementById("birth").value;
-
-
-    localStorage.setItem("name", name);
-
-    localStorage.setItem("mobile", mobile);
-
-    localStorage.setItem("email", email);
-
-    localStorage.setItem("gender", gender);
-
-    localStorage.setItem("birth", birth);
-
-
-    alert("Profile Saved Successfully!");
-
-}
-
-</script>
+            alert("Profile Saved Successfully!");
+        }
+    </script>
 
 </body>
-
 </html>
